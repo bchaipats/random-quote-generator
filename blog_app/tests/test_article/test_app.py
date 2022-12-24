@@ -1,3 +1,5 @@
+import requests
+
 import json
 import pathlib
 
@@ -132,3 +134,26 @@ def test_create_article_bad_request(client, data):
 
     assert response.status_code == 400
     assert response.json is not None
+
+
+@pytest.mark.e2e
+def test_create_list_get(client):
+    requests.post(
+        "http://127.0.0.1:5000/create-article/",
+        json={
+            "author": "john@doe.com",
+            "title": "New Article",
+            "content": "Some extra awesome content"
+        },
+    )
+    response = requests.get(
+        "http://127.0.0.1:5000/article-list/",
+    )
+
+    articles = response.json()
+
+    response = requests.get(
+        f"http://127.0.0.1:5000/article/{articles[0]['id']}/",
+    )
+
+    assert response.status_code == 200
