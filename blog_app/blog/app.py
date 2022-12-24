@@ -1,3 +1,5 @@
+
+from pydantic import ValidationError
 from flask import Flask, jsonify, request
 
 from blog.commands import CreateArticleCommand
@@ -27,6 +29,13 @@ def list_articles():
     query = ListArticlesQuery()
     records = [record.dict() for record in query.execute()]
     return jsonify(records)
+
+
+@app.errorhandler(ValidationError)
+def handle_validation_exception(error):
+    response = jsonify(error.errors())
+    response.status_code = 400
+    return response
 
 
 if __name__ == "__main__":
