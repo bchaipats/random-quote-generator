@@ -18,12 +18,12 @@ def test_create_todo(client):
         "/todos/",
         data=json.dumps(
             {
-                'title': 'Wash the dishes',
-                'done': False,
-                'deadline': '2020-12-12'
+                "title": "Wash the dishes",
+                "done": False,
+                "deadline": "2020-12-12",
             }
         ),
-        content_type='application/json'
+        content_type="application/json",
     )
 
     assert response.status_code == 201
@@ -33,13 +33,9 @@ def test_create_todo_bad_request(client):
     response = client.post(
         "/todos/",
         data=json.dumps(
-            {
-                'title': 'Wash the dishes',
-                'done': False,
-                'deadline': 'WHENEVER'
-            }
+            {"title": "Wash the dishes", "done": False, "deadline": "WHENEVER"}
         ),
-        content_type='application/json'
+        content_type="application/json",
     )
 
     assert response.status_code == 400

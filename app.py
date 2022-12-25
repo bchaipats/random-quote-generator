@@ -20,14 +20,14 @@ class Todo(BaseModel):
     created_at: datetime.datetime
 
 
-@app.route("/todos/", methods=['POST'])
+@app.route("/todos/", methods=["POST"])
 @validate(body=CreateTodo)
 def todos():
     todo = Todo(
         title=request.body_params.title,
         done=request.body_params.done,
         deadline=request.body_params.deadline,
-        created_at=datetime.datetime.now()
+        created_at=datetime.datetime.now(),
     )
 
     return todo, 201
