@@ -1,12 +1,4 @@
-import datetime
-import os
-
 from requests import get
-
-from flask import Flask
-from flask.cli import AppGroup
-
-from sample_project.loan import LoanStatus
 
 import pytest
 
@@ -45,7 +37,6 @@ if __name__ == "__main__":
     main()
     evaluate = 'print("Hi!")'
     eval(evaluate)
-
 
     evaluate = 'open("secret_file.txt").read()'
     eval(evaluate)
