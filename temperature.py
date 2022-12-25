@@ -12,8 +12,6 @@ class HighTemperature:
 
     def __init__(self, value: float):
         """
-        Initialize a temperature value
-
         :param value: value of temperature
         """
 
