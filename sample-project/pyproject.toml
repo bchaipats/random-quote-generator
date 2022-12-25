@@ -10,6 +10,11 @@ packages = [{include = "sample_project"}]
 python = "^3.11"
 flask = "^2.2.2"
 mutmut = "^2.4.3"
+pep8-naming = "^0.13.3"
+flake8 = "^6.0.0"
+isort = "^5.11.4"
+black = "^22.12.0"
+bandit = "^1.7.4"
 
 
 [build-system]

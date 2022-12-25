@@ -1,6 +1,7 @@
 from sample_project.loan import Loan
 from sample_project.reject_loan import reject_loan
 
+
 def test_reject_loan():
     loan = Loan(amount=100_000)
     assert not reject_loan(loan).rejected()
